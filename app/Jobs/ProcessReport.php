@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -14,16 +15,18 @@ class ProcessReport implements ShouldQueue
 
     protected $sleepSeconds;
     protected $reportName;
+    protected $report;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($sleepSeconds, $reportName)
+    public function __construct($sleepSeconds, $reportName, Report $report)
     {
         $this->sleepSeconds = $sleepSeconds;
         $this->reportName = $reportName;
+        $this->report = $report;
     }
 
     /**
@@ -33,6 +36,6 @@ class ProcessReport implements ShouldQueue
      */
     public function handle()
     {
-
+        $this->report->generateSingleReport($this->reportName, $this->sleepSeconds);
     }
 }
