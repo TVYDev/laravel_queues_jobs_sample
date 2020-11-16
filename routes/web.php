@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/generate-report', 'ReportController@generateReport');
+
+Route::get('/info', function() {
+    phpinfo();
+});

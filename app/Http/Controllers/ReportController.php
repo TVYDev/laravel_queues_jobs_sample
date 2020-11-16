@@ -12,19 +12,19 @@ class ReportController extends Controller
     {
         try
         {
+            ini_set('max_execution_time', -1);
+
             $report = new Report();
 
             $arrDurations = [10, 30, 60];
 
             foreach ($arrDurations as $index => $d) {
-                $name = "TEST_$index";
-
                 /** Synchronous */
-//                $report = $report->generateSingleReport($name, $d);
+//                $report = $report->generateSingleReport("SYNC_TEST_$index", $d);
 
 
                 /** Asynchronous */
-                ProcessReport::dispatch($name, $d, $report)
+                ProcessReport::dispatch("ASYNC_TEST_$index", $d, $report)
                     ->onConnection('database');
             }
 

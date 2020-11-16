@@ -11,7 +11,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 
 class ProcessReport implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable;
 
     protected $sleepSeconds;
     protected $reportName;
@@ -22,7 +22,7 @@ class ProcessReport implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($sleepSeconds, $reportName, Report $report)
+    public function __construct($reportName, $sleepSeconds, Report $report)
     {
         $this->sleepSeconds = $sleepSeconds;
         $this->reportName = $reportName;
