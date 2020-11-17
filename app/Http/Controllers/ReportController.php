@@ -12,7 +12,7 @@ class ReportController extends Controller
     {
         try
         {
-            ini_set('max_execution_time', -1);
+//            ini_set('max_execution_time', -1);
 
             $report = new Report();
 
@@ -26,6 +26,7 @@ class ReportController extends Controller
                 /** Asynchronous */
                 ProcessReport::dispatch("ASYNC_TEST_$index", $d, $report)
                     ->onConnection('database');
+//                    ->onQueue("Report$d");
             }
 
 
