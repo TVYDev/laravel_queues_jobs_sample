@@ -13,6 +13,8 @@ class ProcessReport implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
+    public $timeout = 120;
+
     protected $sleepSeconds;
     protected $reportName;
     protected $report;
