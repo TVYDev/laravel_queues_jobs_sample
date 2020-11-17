@@ -16,7 +16,7 @@ class ReportController extends Controller
 
             $report = new Report();
 
-            $arrDurations = [10, 30, 60];
+            $arrDurations = [1, 10, 30, 45, 10, 50, 5, 20, 60];
 
             foreach ($arrDurations as $index => $d) {
                 /** Synchronous */
